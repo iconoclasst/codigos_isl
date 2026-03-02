@@ -42,3 +42,29 @@ print("Valores preditos: {}".format(predicted_y))
 #RSS = somatório de (yi - y'i)^2. yi é o i-ésimo valor real de y, e y'i é o i-ésimo valor predito
 rss = (y - predicted_y)**2
 print("Valores de resíduo para cada Xi: {}".format(rss))
+
+#Regressão Linear usando scikit-learning
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# dados
+x = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+y = np.array([2, 4, 5, 4, 5])
+
+# Modelo
+model = LinearRegression()
+model.fit(x, y)
+
+# parâmetros da regressão linear
+intercept = model.intercept_ #Parâmetro b0, interceptação
+slope = model.coef_[0] #Parâmetro b1, inclinação
+
+print("Inclinação {} e interceptação {}".format(intercept, slope))
+
+y_pred = model.predict(x)
+print("Valores reais: {}".format(y))
+print("Valores preditos: {}".format(y_pred))
+
+#RSS
+rss = y - y_pred
+print("Valores de RSS: {}".format(rss))
